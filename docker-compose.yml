@@ -27,16 +27,16 @@ services:
             KAFKA_LOG_CLEANER_DELETE_RETENTION_MS: 5000
             KAFKA_BROKER_ID: 1
             KAFKA_MIN_INSYNC_REPLICAS: 1
-        connect:
-            image: debezium/connect:latest
-            ports:
-            -  8083:8083
-            environment:
-                GROUP_ID: 1
-                CONFIG_STORAGE_TOPIC: my_connect_configs
-                OFFSET_STORAGE_TOPIC: my_connect_offsets
-                BOOTSTRAP_SERVERS: kafka:9092
-            depends_on:
-            -  zookeeper
-            -  sqlserver
-            -  kafka
+    connect:
+        image: debezium/connect:latest
+        ports:
+        -  8083:8083
+        environment:
+            GROUP_ID: 1
+            CONFIG_STORAGE_TOPIC: my_connect_configs
+            OFFSET_STORAGE_TOPIC: my_connect_offsets
+            BOOTSTRAP_SERVERS: kafka:9092
+        depends_on:
+        -  zookeeper
+        -  sqlserver
+        -  kafka
